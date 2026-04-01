@@ -6,19 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bee1</title>
 
-  <!-- Social Media Preview -->
-  <meta property="og:title" content="Bee1 Official Website" />
-  <meta property="og:description" content="All my links in one place." />
-  <meta property="og:image" content="https://bee1-me.vercel.app/preview.png" />
-  <meta property="og:url" content="https://bee1-me.vercel.app/" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Preview -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Bee1 Official Website">
-  <meta name="twitter:description" content="All my links in one place.">
-  <meta name="twitter:image" content="https://bee1-me.vercel.app/preview.png">
-
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
 
@@ -75,10 +62,6 @@
       box-shadow: 0 0 20px white;
     }
 
-    .fa-brands {
-      margin-right: 10px;
-    }
-
     .glow-btn {
       background: linear-gradient(90deg, blue, red, purple);
       background-size: 200%;
@@ -99,45 +82,33 @@
       border: 2px solid red;
       border-radius: 15px;
       box-shadow: 0 0 15px red;
-      animation: fadeIn 2s ease-in-out;
     }
 
-    .about-box h2 {
-      color: red;
-      text-shadow: 0 0 10px white;
+    h5 { color: red; }
+
+    .music-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: black;
+      border: 2px solid red;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 10px red;
     }
 
-    .about-box p {
-      font-size: 18px;
-      line-height: 1.6;
-      color: lightgray;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h4, h5 {
-      margin-top: 40px;
-    }
-
-    h5 {
-      color: red;
-    }
-
-    /* Hide music player properly */
-    .music-player {
-      display: none;
-    }
+    iframe { display: none; }
   </style>
 </head>
 
 <body>
 
-  <!-- Background Music (muted required for autoplay) -->
-  <iframe class="music-player"
-    src="https://www.youtube.com/embed/KtlgYxa6BMU?autoplay=1&mute=1&loop=1&playlist=KtlgYxa6BMU">
+  <!-- ✅ CORRECT SONG -->
+  <iframe id="musicPlayer"
+    src="https://www.youtube.com/embed/ztl6uLxO7fE?autoplay=1&mute=1&loop=1&playlist=ztl6uLxO7fE"
+    allow="autoplay">
   </iframe>
 
   <h1>Welcome To This Website</h1>
@@ -157,15 +128,29 @@
 
   <div class="about-box">
     <h2>About Me</h2>
-    <p>
-      Hello! I'm <strong>Bee1</strong> â a creator who enjoys gaming, streaming,
-      designing websites, and building fun online experiences.
-      I love learning new things and improving my skills every day.
-      This website is a small project to share my links and show my style!
-    </p>
+    <p>Hello! I'm <strong>Bee1</strong> — a creator who enjoys gaming, streaming, and web design.</p>
   </div>
 
   <h5>Developed By: Bee1</h5>
+
+  <!-- BUTTON -->
+  <button class="music-btn" onclick="toggleMusic()">🔇 Unmute</button>
+
+  <script>
+    let isMuted = true;
+    const iframe = document.getElementById("musicPlayer");
+
+    function toggleMusic() {
+      if (isMuted) {
+        iframe.src = "https://www.youtube.com/embed/ztl6uLxO7fE?autoplay=1&mute=0&loop=1&playlist=ztl6uLxO7fE";
+        document.querySelector(".music-btn").innerText = "🔊 Mute";
+      } else {
+        iframe.src = "https://www.youtube.com/embed/ztl6uLxO7fE?autoplay=1&mute=1&loop=1&playlist=ztl6uLxO7fE";
+        document.querySelector(".music-btn").innerText = "🔇 Unmute";
+      }
+      isMuted = !isMuted;
+    }
+  </script>
 
 </body>
 </html>

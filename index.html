@@ -103,7 +103,7 @@ h5 { color: red; }
 }
 
 iframe {
-  display: none; /* hidden YouTube player */
+  display: none; /* hide YouTube iframe */
 }
 </style>
 </head>
@@ -132,9 +132,9 @@ iframe {
 
 <h5>Developed By: Bee1</h5>
 
-<!-- YouTube Music Embed for Cherly Cherly Lady -->
+<!-- YouTube Music Embed for "Dark Is The Night" -->
 <iframe id="musicPlayer"
-src="https://www.youtube.com/embed/0LFZtKwB8YU?autoplay=0&loop=1&playlist=0LFZtKwB8YU"
+src="https://www.youtube.com/embed/hJgW3Xjwajg?autoplay=0&loop=1&playlist=hJgW3Xjwajg"
 allow="autoplay">
 </iframe>
 
@@ -146,7 +146,7 @@ const iframe = document.getElementById("musicPlayer");
 
 function toggleMusic() {
   if (!playing) {
-    iframe.src = "https://www.youtube.com/embed/0LFZtKwB8YU?autoplay=1&loop=1&playlist=0LFZtKwB8YU";
+    iframe.src = "https://www.youtube.com/embed/hJgW3Xjwajg?autoplay=1&loop=1&playlist=hJgW3Xjwajg";
     document.querySelector(".music-btn").innerText = "⏸ Pause";
   } else {
     iframe.src = "";

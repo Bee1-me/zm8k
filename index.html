@@ -26,8 +26,8 @@ h1 {
 }
 
 @keyframes glow {
-  from { text-shadow: 0 0 10px red; }
-  to { text-shadow: 0 0 25px white; }
+  from { text-shadow: 0 0 10px red, 0 0 20px white; }
+  to { text-shadow: 0 0 25px lightgray, 0 0 35px whitesmoke; }
 }
 
 .links {
@@ -39,18 +39,35 @@ h1 {
 }
 
 a {
+  display: inline-block;
   width: 180px;
   padding: 15px;
   background: gray;
-  color: white;
+  color: whitesmoke;
   border: 2px solid red;
   border-radius: 10px;
+  box-shadow: 0 0 10px red;
   text-decoration: none;
   transition: 0.3s;
+  font-size: 18px;
 }
 
 a:hover {
   transform: scale(1.1);
+  color: gray;
+  background: linear-gradient(100deg, black, gray, black);
+  box-shadow: 0 0 20px white;
+}
+
+.glow-btn {
+  background: linear-gradient(90deg, blue, red, purple);
+  background-size: 200%;
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+  0% { background-position: 200% center; }
+  100% { background-position: 0 center; }
 }
 
 .about-box {
@@ -58,35 +75,31 @@ a:hover {
   max-width: 700px;
   margin: 50px auto;
   padding: 25px;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   border: 2px solid red;
   border-radius: 15px;
+  box-shadow: 0 0 15px red;
 }
 
-/* 🎵 MUSIC UI */
-.music-player-ui {
+h5 { color: red; }
+
+/* 🎵 Music Button */
+.music-btn {
   position: fixed;
   bottom: 20px;
   right: 20px;
   background: black;
   border: 2px solid red;
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px red;
-}
-
-.music-player-ui button {
-  background: red;
-  border: none;
   color: white;
-  padding: 10px;
-  margin: 5px;
-  border-radius: 10px;
+  padding: 12px 18px;
+  border-radius: 50px;
   cursor: pointer;
+  box-shadow: 0 0 10px red;
 }
 
-.music-player-ui input {
-  width: 100%;
+.music-btn:hover {
+  background: red;
+  color: black;
 }
 </style>
 </head>
@@ -97,11 +110,11 @@ a:hover {
 <h1>Social Links</h1>
 
 <div class="links">
-  <a href="https://www.twitch.tv/k4r0_r6" target="_blank">
+  <a class="glow-btn" href="https://www.twitch.tv/k4r0_r6" target="_blank">
     <i class="fa-brands fa-twitch"></i> Twitch
   </a>
 
-  <a href="https://www.youtube.com/@karo-r6" target="_blank">
+  <a class="glow-btn" href="https://www.youtube.com/@karo-r6" target="_blank">
     <i class="fa-brands fa-youtube"></i> YouTube
   </a>
 </div>
@@ -115,42 +128,27 @@ a:hover {
 
 <h5>Developed By: Bee1</h5>
 
-<!-- 🎵 REAL AUDIO PLAYER -->
+<!-- ✅ REAL AUDIO -->
 <audio id="audio" loop>
   <source src="night-we-met.mp3" type="audio/mpeg">
 </audio>
 
-<div class="music-player-ui">
-  <button onclick="playMusic()">▶️</button>
-  <button onclick="pauseMusic()">⏸️</button>
-  <button onclick="toggleMute()">🔊</button>
-  <br>
-  <input type="range" min="0" max="1" step="0.01" onchange="setVolume(this.value)">
-</div>
+<button class="music-btn" onclick="toggleMusic()">▶️ Play Music</button>
 
 <script>
 const audio = document.getElementById("audio");
+let playing = false;
 
-function playMusic() {
-  audio.play();
+function toggleMusic() {
+  if (!playing) {
+    audio.play();
+    document.querySelector(".music-btn").innerText = "⏸ Pause";
+  } else {
+    audio.pause();
+    document.querySelector(".music-btn").innerText = "▶️ Play Music";
+  }
+  playing = !playing;
 }
-
-function pauseMusic() {
-  audio.pause();
-}
-
-function toggleMute() {
-  audio.muted = !audio.muted;
-}
-
-function setVolume(val) {
-  audio.volume = val;
-}
-
-/* Optional: start muted autoplay */
-window.addEventListener("click", () => {
-  audio.play();
-}, { once: true });
 </script>
 
 </body>

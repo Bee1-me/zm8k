@@ -132,9 +132,9 @@ iframe {
 
 <h5>Developed By: Bee1</h5>
 
-<!-- YouTube Music Embed -->
+<!-- YouTube Music Embed for Cherly Cherly Lady -->
 <iframe id="musicPlayer"
-src="https://www.youtube.com/embed/ztl6uLxO7fE?autoplay=0&loop=1&playlist=ztl6uLxO7fE"
+src="https://www.youtube.com/embed/0LFZtKwB8YU?autoplay=0&loop=1&playlist=0LFZtKwB8YU"
 allow="autoplay">
 </iframe>
 
@@ -146,11 +146,9 @@ const iframe = document.getElementById("musicPlayer");
 
 function toggleMusic() {
   if (!playing) {
-    // start YouTube music
-    iframe.src = "https://www.youtube.com/embed/ztl6uLxO7fE?autoplay=1&loop=1&playlist=ztl6uLxO7fE";
+    iframe.src = "https://www.youtube.com/embed/0LFZtKwB8YU?autoplay=1&loop=1&playlist=0LFZtKwB8YU";
     document.querySelector(".music-btn").innerText = "⏸ Pause";
   } else {
-    // stop music by resetting iframe
     iframe.src = "";
     document.querySelector(".music-btn").innerText = "▶️ Play Music";
   }

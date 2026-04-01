@@ -83,7 +83,7 @@ a:hover {
 
 h5 { color: red; }
 
-/* 🎵 Music Button */
+/* Music Button */
 .music-btn {
   position: fixed;
   bottom: 20px;
@@ -100,6 +100,10 @@ h5 { color: red; }
 .music-btn:hover {
   background: red;
   color: black;
+}
+
+iframe {
+  display: none; /* hidden YouTube player */
 }
 </style>
 </head>
@@ -128,23 +132,26 @@ h5 { color: red; }
 
 <h5>Developed By: Bee1</h5>
 
-<!-- ✅ REAL AUDIO -->
-<audio id="audio" loop>
-  <source src="night-we-met.mp3" type="audio/mpeg">
-</audio>
+<!-- YouTube Music Embed -->
+<iframe id="musicPlayer"
+src="https://www.youtube.com/embed/ztl6uLxO7fE?autoplay=0&loop=1&playlist=ztl6uLxO7fE"
+allow="autoplay">
+</iframe>
 
 <button class="music-btn" onclick="toggleMusic()">▶️ Play Music</button>
 
 <script>
-const audio = document.getElementById("audio");
 let playing = false;
+const iframe = document.getElementById("musicPlayer");
 
 function toggleMusic() {
   if (!playing) {
-    audio.play();
+    // start YouTube music
+    iframe.src = "https://www.youtube.com/embed/ztl6uLxO7fE?autoplay=1&loop=1&playlist=ztl6uLxO7fE";
     document.querySelector(".music-btn").innerText = "⏸ Pause";
   } else {
-    audio.pause();
+    // stop music by resetting iframe
+    iframe.src = "";
     document.querySelector(".music-btn").innerText = "▶️ Play Music";
   }
   playing = !playing;
